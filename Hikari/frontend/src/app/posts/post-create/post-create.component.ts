@@ -8,8 +8,9 @@ import { PostsService } from '../post.service';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent {
-  enteredTittle = '';
-  enteredContent = '';
+  enteredEventName = '';
+  enteredAltitud = '';
+  enteredLatitud = '';
 
   constructor(public postsService: PostsService) {
 
@@ -19,7 +20,7 @@ export class PostCreateComponent {
     if (form.invalid) {
       return;
     }
-    this.postsService.addPost(form.value.tittle, form.value.content);
+    this.postsService.addPost(form.value.eventName, form.value.altitud, form.value.latitud);
     form.resetForm();
   }
 }

@@ -4,24 +4,35 @@
           <input
           matInput
           type="text"
-          name="tittle"
+          name="eventName"
           ngModel
           required
           minlength="3"
-          placeholder="Post tittle"
+          placeholder="Nombre del evento"
           #tittle="ngModel">
-          <mat-error *ngIf="tittle.invalid">Por favor entre un titulo para el post</mat-error>
+          <mat-error *ngIf="tittle.invalid">Por favor entre un nombre para el evento</mat-error>
         </mat-form-field>
         <mat-form-field>
           <textarea
           matInput
-          rows="6"
-          name="content"
+          type="text"
+          name="altitud"
           ngModel
           required
-          placeholder="Post content"
+          placeholder="Altitud del evento"
           #content = "ngModel"></textarea>
-          <mat-error *ngIf="content.invalid">Por favor ingrese contenido</mat-error>
+          <mat-error *ngIf="content.invalid">Por favor ingrese la altitud del evento</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea
+          matInput
+          type="text"
+          name="latitud"
+          ngModel
+          required
+          placeholder="Latitud del evento"
+          #content = "ngModel"></textarea>
+          <mat-error *ngIf="content.invalid">Por favor ingrese la latitud del evento</mat-error>
         </mat-form-field>
         <button
           mat-raised-button

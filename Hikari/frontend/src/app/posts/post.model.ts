@@ -1,4 +1,5 @@
 export interface Post {
-  tittle: string;
-  content: string;
+  eventName: string;
+  altitud: string;
+  latitud: string;
 }

@@ -13,8 +13,8 @@ export class PostsService {
   getPostUpdateListener() {
     return this.postUpdated.asObservable();
   }
-  addPost(tittle: string, content: string) {
-    const post: Post = {tittle: tittle, content: content};
+  addPost(eventName: string, altitud: string, latitud: string) {
+    const post: Post = { eventName: eventName, altitud: altitud, latitud: latitud};
     this.posts.push(post);
     this.postUpdated.next([...this.posts]);
   }

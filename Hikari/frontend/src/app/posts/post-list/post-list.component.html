@@ -1,9 +1,10 @@
 <mat-accordion multi="true" *ngIf="posts.length > 0">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
-      {{ post.tittle }}
+      Evento: {{ post.eventName }}
     </mat-expansion-panel-header>
-    <p>{{ post.content }}</p>
+    <p>Altitud: {{ post.altitud }}</p>
+    <p>Latitud: {{ post.latitud }}</p>
     <mat-action-row>
       <button mat-button color="primary">Edit</button>
       <button mat-button color="warn">Delete</button>
