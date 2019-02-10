@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 
-const { mongose } = require('./database');
+const { mongoose } = require('./database');
 
 // Settings
 app.set('port', process.env.PORT || 3000);
@@ -13,7 +13,7 @@ app.use(express.json()); // Sirve para entender los archivos .json
 
 
 //Routes
-app.use(require('./routes/events.routes'));
+app.use('/api/events', require('./routes/events.routes'));
 //Starting the server
 
 app.listen(app.get('port'), () => {
