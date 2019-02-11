@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const LUR = 'mongodb-server/hikari-gps';
+const LUR = 'mongo:27017/hikari-gps';
 
 mongoose.connect(LUR)
     .then(db => console.log('DB is connected'))
