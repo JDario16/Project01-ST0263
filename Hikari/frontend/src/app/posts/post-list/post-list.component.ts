@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Post } from '../post.model';
 import { PostsService } from '../post.service';
+import { PostCreateComponent } from '../post-create/post-create.component';
 
 @Component({
   selector: 'app-post-list',
@@ -10,22 +11,41 @@ import { PostsService } from '../post.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit, OnDestroy {
-// posts = [
-//   {tittle: 'First Post', content: 'This is the first post\'s content'},
-//   {tittle: 'Second Post', content: 'This is the second post\'s content'},
-//   {tittle: 'Third Post', content: 'This is the third post\'s content'}
-// ];
-  posts: Post [] = [];
   private postsSub: Subscription;
+  public postCreate: PostCreateComponent;
 
   constructor(public postsService: PostsService) { }
 
   ngOnInit() {
-    this.posts = this.postsService.getPosts();
-    this.postsSub = this.postsService.getPostUpdateListener()
+    /*this.posts = this.postsService.getPosts;*/
+
+    this.getEvents();
+    console.log(this.postsService.posts.length);
+    /*this.postsSub = this.postsService.getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-        this.posts = posts;
+        this.postsService.posts = posts;
+      });*/
+  }
+
+  getEvents() {
+    this.postsService.getPosts()
+      .subscribe(res => {
+        this.postsService.posts = res as Post[];
+        console.log(res);
       });
+  }
+
+  editEvent(post: Post) {
+    this.postsService.selectedEvent = post;
+  }
+
+  deleteEvent(_id: string) {
+    this.postsService.deleteEvent(_id)
+      .subscribe(res => {
+        console.log(res);
+        this.getEvents();
+      });
+
   }
 
   ngOnDestroy() {

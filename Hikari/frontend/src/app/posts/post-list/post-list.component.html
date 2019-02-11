@@ -1,14 +1,18 @@
-<mat-accordion multi="true" *ngIf="posts.length > 0">
-  <mat-expansion-panel *ngFor="let post of posts">
+<mat-accordion multi="true" *ngIf="postsService.posts.length > 0">
+  <mat-expansion-panel *ngFor="let posts of postsService.posts">
     <mat-expansion-panel-header>
-      Evento: {{ post.eventName }}
+      Evento: {{ posts.name }}
     </mat-expansion-panel-header>
-    <p>Altitud: {{ post.altitud }}</p>
-    <p>Latitud: {{ post.latitud }}</p>
+    <p>Altitud: {{ posts.altitud }}</p>
+    <p>Latitud: {{ posts.latitud }}</p>
     <mat-action-row>
-      <button mat-button color="primary">Edit</button>
-      <button mat-button color="warn">Delete</button>
+      <button
+      (click) = "editEvent(posts)"
+      mat-button color="primary">Edit</button>
+      <button
+      (click)= "deleteEvent(posts._id)"
+      mat-button color="warn">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf = "posts.length <= 0"> No posts added yet</p>
+<p class="info-text mat-body-1" *ngIf = "postsService.posts.length <= 0"> No posts added yet</p>
