@@ -6,4 +6,4 @@ RUN npm cache verify
 RUN npm install
 COPY . /usr/src/app
 EXPOSE 3000
-CMD ["npm","run"]
+CMD ["npm","start"]
