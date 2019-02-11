@@ -11,7 +11,7 @@ export class PostsService {
 
   //Fazt
 
-  readonly URL_API = './api/events';
+  readonly URL_API = 'http://localhost:3000/api/events';
   constructor(private http: HttpClient) {
 
   }
