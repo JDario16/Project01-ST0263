@@ -1,0 +1,49 @@
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+      <mat-form-field>
+          <input
+            type="hidden"
+            name="_id"
+            ngModel
+            required
+            placeholder="id"
+            #content = "ngModel">
+          <input
+          matInput
+          type="text"
+          name="name"
+          ngModel
+          required
+          minlength="3"
+          placeholder="Nombre del evento"
+          #tittle="ngModel">
+          <mat-error *ngIf="tittle.invalid">Por favor entre un nombre para el evento</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea
+          matInput
+          type="text"
+          name="altitud"
+          ngModel
+          required
+          placeholder="Altitud del evento"
+          #content = "ngModel"></textarea>
+          <mat-error *ngIf="content.invalid">Por favor ingrese la altitud del evento</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea
+          matInput
+          type="text"
+          name="latitud"
+          ngModel
+          required
+          placeholder="Latitud del evento"
+          #content = "ngModel"></textarea>
+          <mat-error *ngIf="content.invalid">Por favor ingrese la latitud del evento</mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color = "accent"
+          type="submit">Save post</button>
+  </form>
+</mat-card>

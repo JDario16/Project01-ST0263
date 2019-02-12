@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "expose": "^0.1.4",
     "express": "^4.16.4",
     "mongoose": "^5.4.11",
     "mongoose-morgan": "^1.0.8",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
