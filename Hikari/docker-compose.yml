@@ -11,10 +11,13 @@ services:
   build: server # specify the directory of the Dockerfile
   ports:
   - "3000:3000" #specify ports mapping
-  links:
-  - database # link this service to the database service
+  depends_on:
+  - mongo-server # link this service to the database service
 
- database: # name of the third service
-  image: mongo # specify image to build container from
-  ports:
-  - "27017:27017" # specify port forwarding
+  mongo-server:
+    container_name: mongo-server
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
