@@ -1,35 +1,34 @@
-import { Post } from './post.model';
+import { Events } from '../models/events';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 @Injectable({providedIn: 'root'})
 export class PostsService {
-  private posts: Post[] = [];
-  private postUpdated = new Subject<Post[]>();
+  private postUpdated = new Subject<Events[]>();
 
+  selectedEvent: Events;
+  posts: Events[] = [];
 
-  readonly URL_API = 'http://localhost:3000/api/events';
+  readonly URL_API = 'http://localhost:3000/api/events/';
   constructor(private http: HttpClient) {
-
+    this.selectedEvent = new Events();
   }
 
-  getPosts() {
-    return [...this.posts]; //Todos los objetos de post[]
+  getEvents() {
+    return this.http.get(this.URL_API);
   }
 
-  addPost(eventName: string, altitud: string, latitud: string) {
-    const post: Post = { eventName: eventName, altitud: altitud, latitud: latitud};
+  postEvent(Event: Events) {
+    return this.http.post(this.URL_API, Event);
   }
 
-  /*putEvent(post: Post) {
-    return this.http.put(this.URL_API + `/${post._id}`, post);
-  }*/
+  putEvent(Event: Events) {
+    return this.http.put(this.URL_API + `${Event._id}`, Event);
+  }
 
   deleteEvent(_id: string) {
     return this.http.delete(this.URL_API + `/${_id}`);
   }
-
-
   getPostUpdateListener() {
     return this.postUpdated.asObservable();
   }

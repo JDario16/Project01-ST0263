@@ -1,11 +1,17 @@
 <mat-card>
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <form (submit)="addEvent(postForm)" #postForm="ngForm">
+          <input
+          type="hidden"
+          name="_id"
+          #_id="ngModel"
+          [(ngModel)] = "postsService.selectedEvent._id">
+
       <mat-form-field>
           <input
           matInput
           type="text"
-          name="eventName"
-          ngModel
+          name="name"
+          [(ngModel)] = "postsService.selectedEvent.name"
           required
           minlength="3"
           placeholder="Nombre del evento"
@@ -17,7 +23,7 @@
           matInput
           type="text"
           name="altitud"
-          ngModel
+          [(ngModel)] = "postsService.selectedEvent.altitud"
           required
           placeholder="Altitud del evento"
           #content = "ngModel"></textarea>
@@ -28,7 +34,7 @@
           matInput
           type="text"
           name="latitud"
-          ngModel
+          [(ngModel)] = "postsService.selectedEvent.latitud"
           required
           placeholder="Latitud del evento"
           #content = "ngModel"></textarea>
@@ -41,17 +47,21 @@
   </form>
 </mat-card>
 <p></p>
-<mat-accordion multi="true" *ngIf="posts.length > 0">
-  <mat-expansion-panel *ngFor="let post of posts">
+<mat-accordion multi="true" *ngIf="postsService.posts.length > 0">
+  <mat-expansion-panel *ngFor="let post of postsService.posts">
     <mat-expansion-panel-header>
-      Evento: {{ post.eventName }}
+      Evento: {{ post.name }}
     </mat-expansion-panel-header>
     <p>Altitud: {{ post.altitud }}</p>
     <p>Latitud: {{ post.latitud }}</p>
     <mat-action-row>
-      <button mat-button color="primary">Edit</button>
-      <button mat-button color="warn">Delete</button>
+      <button mat-button
+      (click)="editEvent(post)"
+      color="primary">Edit</button>
+      <button mat-button
+      (click)="deleteEvent(post._id)"
+      color="warn">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf = "posts.length <= 0"> No posts added yet</p>
+<p class="info-text mat-body-1" *ngIf = "postsService.posts.length <= 0"> No posts added yet</p>
