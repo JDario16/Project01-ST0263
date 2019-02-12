@@ -11,7 +11,7 @@ export class PostsService {
 
   //Fazt
 
-  readonly URL_API = 'server/api/events';
+  readonly URL_API = 'http://localhost:3000/api/events';
   constructor(private http: HttpClient) {
 
   }
@@ -33,9 +33,9 @@ export class PostsService {
   }
 
 
-  /*getPostUpdateListener() {
+  getPostUpdateListener() {
     return this.postUpdated.asObservable();
-  }*/
+  }
   /*addPost(eventName: string, altitud: number, latitud: number) {
     const post: Post = { name: eventName, altitud: altitud, latitud: latitud};
     this.posts.push(post);
