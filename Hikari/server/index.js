@@ -11,7 +11,7 @@ app.set('port', process.env.PORT || 3000);
 //Middlewares - Multiples rutas (Dar, recibir datos)
 app.use(morgan('dev'));
 app.use(express.json()); // Sirve para entender los archivos .json
-app.use(cors({origin: 'http://0.0.0.0:80'}));
+app.use(cors({origin: 'http://10.131.137.162:80'}));
 
 
 //Routes
