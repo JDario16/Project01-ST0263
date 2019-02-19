@@ -15,7 +15,7 @@ app.use(cors({origin: 'https://jamonto5.dis.eafit.edu.co'}));
 
 
 //Routes
-app.use('/api/events', require('./routes/events.routes'));
+app.use('/server/', require('./routes/events.routes'));
 //Starting the server
 
 app.listen(app.get('port'), () => {

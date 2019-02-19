@@ -9,7 +9,7 @@ export class PostsService {
   selectedEvent: Events;
   posts: Events[] = [];
 
-  readonly URL_API = 'http://10.131.137.162:3000/api/events/';
+  readonly URL_API = "https://jamonto5.dis.eafit.edu.co/server/";
   constructor(private http: HttpClient) {
     this.selectedEvent = new Events();
   }
